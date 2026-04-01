@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mission & Vision — Tembusu Financial Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --emerald: #005a3d;
+    --emerald-deep: #003d2a;
+    --emerald-mid: #00754f;
+    --yellow: #E3EF26;
+    --charcoal: #2E2E2E;
+    --beige: #F5F0E8;
+    --white: #FFFFFF;
+    --muted: #6b7c74;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--beige);
+    color: var(--charcoal);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--emerald);
+    padding: 32px 60px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -60px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 2px solid rgba(227,239,38,0.15);
+    pointer-events: none;
+  }
+  .header-logo {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.3px;
+  }
+  .header-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    opacity: 0.85;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--emerald-deep);
+    padding: 60px 60px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 65%;
+    background: var(--yellow);
+    border-radius: 0 3px 3px 0;
+    opacity: 0.55;
+  }
+  .hero-eyebrow {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: clamp(30px, 4.5vw, 50px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 600px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--yellow);
+  }
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* NEON RULE */
+  .neon-rule {
+    height: 2px;
+    background: linear-gradient(to right, var(--yellow), transparent);
+    opacity: 0.25;
+    border: none;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 60px 80px;
+  }
+
+  /* RATIONALE BAND */
+  .rationale-band {
+    background: var(--white);
+    border-left: 4px solid var(--emerald);
+    padding: 28px 36px;
+    margin-bottom: 52px;
+    box-shadow: 0 2px 18px rgba(0,90,61,0.06);
+  }
+  .section-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .rationale-band p {
+    font-size: 14px;
+    color: var(--charcoal);
+    line-height: 1.8;
+    max-width: 800px;
+  }
+
+  /* STATEMENT CARDS */
+  .statements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 52px;
+  }
+
+  .statement-card {
+    background: var(--white);
+    overflow: hidden;
+    box-shadow: 0 2px 22px rgba(0,90,61,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s;
+  }
+  .statement-card:hover {
+    box-shadow: 0 8px 36px rgba(0,90,61,0.14);
+  }
+
+  .card-header {
+    background: var(--emerald);
+    padding: 26px 30px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-header::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    bottom: -36px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid rgba(227,239,38,0.0);
+  }
+  .card-type {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 10px;
+    display: block;
+    opacity: 0.9;
+  }
+  .card-header h2 {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .card-body {
+    padding: 30px 30px 26px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .statement-quote {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 16.5px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--charcoal);
+    border-top: 2px solid var(--beige);
+    padding-top: 22px;
+    margin-bottom: 26px;
+    flex: 1;
+  }
+  .statement-quote strong {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--emerald);
+  }
+
+  .why-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+  .why-list li {
+    font-size: 12.5px;
+    color: #4e6259;
+    line-height: 1.65;
+    padding-left: 16px;
+    position: relative;
+  }
+  .why-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--emerald);
+  }
+  .why-list li strong {
+    color: var(--emerald);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* CONDENSED FORMS */
+  .condensed-section {
+    background: var(--emerald);
+    padding: 44px 52px;
+    margin-bottom: 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .condensed-section::before {
+    content: '\201C';
+    position: absolute;
+    right: 40px;
+    top: -30px;
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 220px;
+    color: rgba(227,239,38,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .condensed-section .section-label {
+    color: rgba(227,239,38,0.7);
+    margin-bottom: 32px;
+  }
+  .condensed-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 36px;
+    align-items: start;
+  }
+  .condensed-divider {
+    background: rgba(255,255,255,0.12);
+    align-self: stretch;
+  }
+  .condensed-type {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .condensed-item blockquote {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.45;
+    border: none;
+    padding: 0;
+  }
+  .condensed-item blockquote em {
+    color: var(--yellow);
+    font-style: italic;
+  }
+
+  /* USAGE NOTE */
+  .usage-note {
+    background: var(--white);
+    padding: 30px 36px;
+    box-shadow: 0 2px 16px rgba(0,90,61,0.05);
+  }
+  .usage-note p {
+    font-size: 13.5px;
+    color: #4e6259;
+    line-height: 1.8;
+    max-width: 760px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--emerald-deep);
+    padding: 22px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.3px;
+  }
+  footer span { color: var(--yellow); opacity: 0.65; }
+
+  @media (max-width: 760px) {
+    header, .hero, main, footer { padding-left: 24px; padding-right: 24px; }
+    .statements-grid { grid-template-columns: 1fr; }
+    .condensed-grid { grid-template-columns: 1fr; }
+    .condensed-divider { display: none; }
+    .condensed-section { padding: 32px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">Tembusu Financial Services</div>
+  <span class="header-label">Brand Positioning</span>
+</header>
+<hr class="neon-rule">
+
+<div class="hero">
+  <div class="hero-eyebrow">Mission &amp; Vision Statements</div>
+  <h1>Purpose that<br><em>guides every decision.</em></h1>
+  <p class="hero-sub">Crafted to align strategy, inspire the team, and signal clearly to the market who Tembusu is — and who it serves.</p>
+</div>
+
+<main>
+
+  <div class="rationale-band">
+    <span class="section-label">Strategic Foundation</span>
+    <p>Tembusu's core differentiation isn't just speed or rates — it's <strong>access</strong>. The company exists specifically for borrowers the traditional banking system fails: those with complex income structures, TDSR constraints, unconventional collateral, or urgent timelines. This is a genuinely meaningful market role — bridging a real gap between underserved borrowers and capital. The Tembusu tree, a native Singapore heritage tree, symbolises deep roots, resilience, and growth — values the brand earns the right to own.</p>
+  </div>
+
+  <div class="statements-grid">
+
+    <div class="statement-card">
+      <div class="card-header">
+        <span class="card-type">Mission Statement</span>
+        <h2>Why We Exist</h2>
+      </div>
+      <div class="card-body">
+        <p class="statement-quote">
+          "To make financing <strong>accessible and straightforward</strong> — delivering fast, honest, and flexible solutions so that individuals and businesses can move forward with confidence, <strong>even when traditional lenders can't help.</strong>"
+        </p>
+        <span class="why-label">Why This Works</span>
+        <ul class="why-list">
+          <li><strong>"Accessible and straightforward"</strong> addresses the core customer pain: financial complexity and banking gatekeeping.</li>
+          <li><strong>"Fast, honest, flexible"</strong> reflects Tembusu's stated brand values and gives the tagline institutional permanence.</li>
+          <li><strong>"Even when traditional lenders can't help"</strong> is the brand's most powerful differentiator — stated without being adversarial toward banks.</li>
+          <li>Speaks equally to <strong>employees</strong> (why we underwrite differently) and <strong>customers</strong> (who we serve).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="statement-card">
+      <div class="card-header">
+        <span class="card-type">Vision Statement</span>
+        <h2>Where We're Going</h2>
+      </div>
+      <div class="card-body">
+        <p class="statement-quote">
+          "To be Singapore's <strong>most trusted private lender</strong> — the first call for businesses and individuals who need a financing partner that <strong>sees their potential, not just their paperwork.</strong>"
+        </p>
+        <span class="why-label">Why This Works</span>
+        <ul class="why-list">
+          <li><strong>"Most trusted"</strong> is aspirational but credible — 50+ years of experience, $1B funded, 2,000 deals give it earned legitimacy.</li>
+          <li><strong>"First call"</strong> creates a mental positioning goal: top-of-mind for a specific, underserved audience.</li>
+          <li><strong>"Sees their potential, not just their paperwork"</strong> is the philosophical heart of Tembusu's flexible underwriting model.</li>
+          <li>Gives employees a <strong>north star</strong>: every loan decision is an act of seeing potential.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="condensed-section">
+    <span class="section-label">Compressed Forms — Headlines, Social &amp; Campaigns</span>
+    <div class="condensed-grid">
+      <div class="condensed-item">
+        <span class="condensed-type">Mission in One Line</span>
+        <blockquote>Finance that works for <em>people,</em> not just profiles.</blockquote>
+      </div>
+      <div class="condensed-divider"></div>
+      <div class="condensed-item">
+        <span class="condensed-type">Vision in One Line</span>
+        <blockquote>The lender that believes in you <em>when others won't.</em></blockquote>
+      </div>
+    </div>
+  </div>
+
+  <div class="usage-note">
+    <span class="section-label">Usage Guidance</span>
+    <p>For <strong>external-facing brand materials</strong> — website, brochures, pitch decks — use the full statements above. For <strong>internal alignment</strong> such as team briefings and HR materials, pair with the condensed forms for memorability. The single-line versions are best suited for <strong>headlines, social content, and campaign anchors</strong> where brevity is critical.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>Prepared for <span>Tembusu Financial Services</span> · Brand Positioning · March 2026 · Confidential</p>
+  <p>tembusufs.com</p>
+</footer>
+
+</body>
+</html>

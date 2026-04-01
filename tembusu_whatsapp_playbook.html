@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tembusu Financial Services — WhatsApp CRM Engagement Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --emerald: #005a3d;
+    --emerald-mid: #00a36e;
+    --emerald-light: #e6f4ee;
+    --emerald-dark: #003d29;
+    --yellow: #E3EF26;
+    --charcoal: #2E2E2E;
+    --white: #FFFFFF;
+    --beige: #F5F0E8;
+    --beige-dark: #EAE6DC;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-400: #adb5bd;
+    --gray-600: #6c757d;
+    --wa-green: #25D366;
+    --wa-bg: #ECE5DD;
+    --wa-bubble-out: #DCF8C6;
+    --wa-bubble-in: #FFFFFF;
+    --wa-header: #075e54;
+    --red-light: #fef2f2;
+    --red: #c0392b;
+    --amber: #f59e0b;
+    --amber-light: #fffbeb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--beige);
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(150deg, var(--emerald) 0%, var(--emerald-dark) 60%, #001a10 100%);
+    min-height: 320px;
+    padding: 56px 60px 52px;
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(227,239,38,0.08) 0%, transparent 65%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute; bottom: -80px; left: 20%;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,163,110,0.12) 0%, transparent 65%);
+  }
+  .cover-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .cover-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(227,239,38,0.12);
+    border: 1px solid rgba(227,239,38,0.25);
+    color: var(--yellow);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 44px; font-weight: 700;
+    color: var(--white); line-height: 1.15; margin-bottom: 12px;
+  }
+  .cover h1 span { color: var(--yellow); }
+  .cover .cover-sub {
+    color: rgba(255,255,255,0.6); font-size: 15px; font-weight: 300;
+    max-width: 560px; margin-bottom: 36px;
+  }
+  .cover-meta {
+    display: flex; gap: 28px; flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    color: rgba(255,255,255,0.5); font-size: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .cover-meta-item strong { color: rgba(255,255,255,0.85); }
+
+  /* ── TOC ── */
+  .toc-bar {
+    background: var(--charcoal);
+    padding: 0 60px;
+    display: flex; gap: 0; overflow-x: auto;
+    justify-content: center;
+  }
+  .toc-item {
+    padding: 14px 20px;
+    font-size: 11.5px; font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap; cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .toc-item:hover { color: var(--white); border-bottom-color: var(--emerald-mid); }
+  .toc-item.active { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+  /* ── MAIN ── */
+  .main { max-width: 960px; margin: 0 auto; padding: 0 32px 80px; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin: 52px 0 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--emerald-light);
+  }
+  .section-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--emerald); color: var(--white);
+    font-family: 'Vollkorn', serif; font-size: 18px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-family: 'Vollkorn', serif; font-size: 26px;
+    color: var(--emerald); flex: 1;
+  }
+  .section-header .section-desc {
+    font-size: 13px; color: var(--gray-600);
+    max-width: 400px; text-align: right;
+  }
+
+  /* ── SUB-SECTION ── */
+  .sub-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--emerald); margin: 32px 0 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sub-label::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+
+  /* ── WA PHONE ── */
+  .wa-phone {
+    background: var(--wa-bg);
+    border-radius: 14px; overflow: hidden;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  }
+  .wa-topbar {
+    background: var(--wa-header);
+    padding: 8px 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .wa-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--emerald-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: var(--white); flex-shrink: 0;
+  }
+  .wa-contact { flex: 1; }
+  .wa-contact-name { color: var(--white); font-size: 13px; font-weight: 600; }
+  .wa-contact-sub { color: rgba(255,255,255,0.55); font-size: 10px; }
+  .wa-chat { padding: 12px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
+  .wa-msg {
+    padding: 9px 12px; border-radius: 8px;
+    font-size: 12.5px; line-height: 1.55; max-width: 88%;
+  }
+  .wa-msg.out {
+    background: var(--wa-bubble-out);
+    align-self: flex-end; border-radius: 8px 0 8px 8px;
+  }
+  .wa-msg.in {
+    background: var(--wa-bubble-in);
+    align-self: flex-start; border-radius: 0 8px 8px 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+  .wa-time { font-size: 9.5px; color: rgba(0,0,0,0.38); text-align: right; margin-top: 4px; }
+  .wa-qr-wrap { padding: 0 10px 10px; display: flex; flex-direction: column; gap: 5px; }
+  .wa-qr {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 6px; padding: 8px 12px;
+    text-align: center; font-size: 12px;
+    color: #128c7e; font-weight: 500;
+  }
+  .wa-delay {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--white); border: 1px dashed var(--gray-200);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; color: var(--gray-600);
+    align-self: center; margin: 4px 0;
+  }
+  .wa-delay::before { content: '⏱'; }
+
+  /* ── SEQUENCE CARD ── */
+  .sequence-card {
+    background: var(--white); border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    overflow: hidden; margin-bottom: 24px;
+  }
+  .seq-header {
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+    padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .seq-header-left {}
+  .seq-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 4px;
+  }
+  .seq-header h3 {
+    font-family: 'Vollkorn', serif; font-size: 18px;
+    color: var(--white);
+  }
+  .seq-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .seq-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 3px 12px;
+    font-size: 11px; color: rgba(255,255,255,0.75);
+  }
+  .seq-body { padding: 24px; }
+
+  /* ── TWO-COL LAYOUT ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+  /* ── MESSAGE TEMPLATE BOX ── */
+  .msg-box {
+    background: var(--gray-100); border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 4px solid var(--emerald);
+    margin-bottom: 12px;
+  }
+  .msg-box.warn { border-left-color: var(--amber); background: var(--amber-light); }
+  .msg-box.red { border-left-color: var(--red); background: var(--red-light); }
+  .msg-box .msg-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase;
+    color: var(--gray-400); margin-bottom: 8px;
+  }
+  .msg-box .msg-label.green { color: var(--emerald); }
+  .msg-box .msg-label.amber { color: #b45309; }
+  .msg-box .msg-label.red { color: var(--red); }
+  .msg-box p {
+    font-size: 13px; line-height: 1.7; color: var(--charcoal);
+    white-space: pre-line;
+  }
+  .msg-box .msg-cta {
+    display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;
+  }
+  .msg-btn {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 6px; padding: 5px 12px;
+    font-size: 11.5px; color: #128c7e; font-weight: 500;
+  }
+
+  /* ── RULE CARDS ── */
+  .rule-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 8px; }
+  .rule-card {
+    background: var(--white); border-radius: 10px;
+    padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-top: 3px solid var(--emerald);
+  }
+  .rule-card.amber-top { border-top-color: var(--amber); }
+  .rule-card.red-top { border-top-color: var(--red); }
+  .rule-icon { font-size: 20px; margin-bottom: 8px; }
+  .rule-card h4 {
+    font-family: 'Vollkorn', serif; font-size: 14px;
+    color: var(--charcoal); margin-bottom: 6px;
+  }
+  .rule-card p { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--white); border-radius: 14px; overflow: hidden; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .faq-cat-header {
+    background: var(--emerald);
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .faq-cat-icon { font-size: 18px; }
+  .faq-cat-title {
+    font-family: 'Vollkorn', serif; font-size: 16px;
+    color: var(--white);
+  }
+  .faq-item {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    font-weight: 600; font-size: 13.5px;
+    color: var(--charcoal); margin-bottom: 8px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .faq-q::before {
+    content: 'Q';
+    background: var(--emerald-light); color: var(--emerald);
+    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 1px;
+  }
+  .faq-a {
+    font-size: 13px; color: var(--gray-600); line-height: 1.7;
+    padding-left: 30px;
+  }
+  .faq-a strong { color: var(--charcoal); }
+  .faq-flag {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--amber-light); border: 1px solid #fde68a;
+    border-radius: 4px; padding: 2px 8px;
+    font-size: 11px; color: #b45309; font-weight: 600;
+    margin-top: 6px; margin-left: 30px;
+  }
+
+  /* ── COMPLIANCE TABLE ── */
+  .comp-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  .comp-table th {
+    background: var(--charcoal); color: var(--white);
+    padding: 11px 16px; font-size: 12px; text-align: left;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .comp-table td {
+    padding: 11px 16px; font-size: 13px;
+    border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+  .comp-table tr:nth-child(even) td { background: var(--gray-100); }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .ok-tag { color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .no-tag { color: #991b1b; background: var(--red-light); border: 1px solid #fecaca; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+
+  /* ── ESCALATION MATRIX ── */
+  .matrix-table { width: 100%; border-collapse: collapse; }
+  .matrix-table th {
+    background: var(--emerald); color: var(--white);
+    padding: 11px 16px; font-size: 12px; font-weight: 600; text-align: left;
+  }
+  .matrix-table td {
+    padding: 12px 16px; font-size: 13px;
+    border-bottom: 1px solid var(--gray-200); vertical-align: top;
+  }
+  .matrix-table tr:nth-child(even) td { background: var(--gray-100); }
+  .pri-high { color: #991b1b; font-weight: 700; }
+  .pri-med { color: #b45309; font-weight: 600; }
+  .pri-low { color: #166534; font-weight: 600; }
+  .sla-pill {
+    display: inline-block; padding: 2px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600;
+  }
+  .sla-urgent { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  .sla-fast { background: var(--amber-light); color: #b45309; border: 1px solid #fde68a; }
+  .sla-normal { background: var(--emerald-light); color: var(--emerald); border: 1px solid #b2dfdb; }
+
+  /* ── PRODUCT BOUNDARY ── */
+  .boundary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .boundary-card {
+    border-radius: 10px; padding: 16px 18px;
+  }
+  .boundary-card.can { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .boundary-card.cannot { background: var(--red-light); border: 1px solid #fecaca; }
+  .boundary-card h4 {
+    font-size: 13px; font-weight: 700; margin-bottom: 10px;
+  }
+  .boundary-card.can h4 { color: #166534; }
+  .boundary-card.cannot h4 { color: #991b1b; }
+  .boundary-list { display: flex; flex-direction: column; gap: 5px; }
+  .boundary-item {
+    font-size: 12.5px; line-height: 1.5;
+    display: flex; gap: 7px;
+  }
+  .boundary-item::before { flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+  .boundary-card.can .boundary-item::before { content: '✓'; color: #166534; }
+  .boundary-card.cannot .boundary-item::before { content: '✗'; color: #991b1b; }
+
+  /* ── TAG CHIP ── */
+  .chip {
+    display: inline-flex; align-items: center;
+    background: var(--emerald-light); color: var(--emerald);
+    border-radius: 20px; padding: 3px 12px; font-size: 11.5px; font-weight: 500;
+    margin: 3px;
+  }
+  .chip.amber { background: var(--amber-light); color: #b45309; }
+  .chip.gray { background: var(--gray-100); color: var(--gray-600); }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--emerald-light);
+    border-left: 4px solid var(--emerald);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px; font-size: 13px; color: var(--emerald);
+    margin: 12px 0;
+  }
+  .warn-box {
+    background: var(--amber-light);
+    border-left: 4px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px; font-size: 13px; color: #78350f;
+    margin: 12px 0;
+  }
+  .warn-box strong { display: block; margin-bottom: 3px; }
+
+  /* ── FOOTER ── */
+  .playbook-footer {
+    background: var(--charcoal); color: rgba(255,255,255,0.4);
+    text-align: center; padding: 24px;
+    font-size: 12px; margin-top: 60px;
+  }
+  .playbook-footer strong { color: var(--white); }
+
+  @media print {
+    .toc-bar { display: none; }
+    .cover { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-badge">Internal Operations Document</div>
+    <h1>WhatsApp CRM<br><span>Customer Engagement</span> Playbook</h1>
+    <p class="cover-sub">A complete guide for the Tembusu Financial Services team — from first message to booked consultation. Message templates, FAQ responses, escalation rules, and compliance boundaries, all in one place.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">📅 <strong>Version 1.0 — April 2026</strong></div>
+      <div class="cover-meta-item">🏦 <strong>Tembusu Financial Services</strong></div>
+      <div class="cover-meta-item">📲 <strong>Platform: SleekFlow + WhatsApp Business API</strong></div>
+      <div class="cover-meta-item">⚖️ <strong>MinLaw Compliant</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc-bar">
+  <a href="#s1" class="toc-item active">1. Core Principles</a>
+  <a href="#s2" class="toc-item">2. Message Sequences</a>
+  <a href="#s3" class="toc-item">3. Scenario Playbooks</a>
+  <a href="#s4" class="toc-item">4. FAQ Responses</a>
+  <a href="#s5" class="toc-item">5. Escalation Rules</a>
+  <a href="#s6" class="toc-item">6. Product Boundaries</a>
+  <a href="#s7" class="toc-item">7. Compliance</a>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════ SECTION 1 ═══════════════════════════ -->
+<div id="s1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div>
+      <h2>Core Engagement Principles</h2>
+    </div>
+    <div class="section-desc">The fundamentals that govern every customer interaction</div>
+  </div>
+
+  <div class="rule-grid">
+    <div class="rule-card">
+      <div class="rule-icon">⚡</div>
+      <h4>Call First, Qualify Second</h4>
+      <p>Get to the call offer within 3 messages maximum. Every extra question before offering the call is a drop-off risk. Use the call to collect detailed information — not WhatsApp.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🎯</div>
+      <h4>Two Options, Not Open Questions</h4>
+      <p>"Are you free this morning or after lunch?" converts far better than "When are you free?" Force a choice. Specificity signals professionalism and gets faster responses.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🤝</div>
+      <h4>Use the Advisor's Name</h4>
+      <p>"I'll connect you with Shirlyn, our loan advisor" makes the handoff feel personal and warm — not a cold transfer to a call centre. Always name the person.</p>
+    </div>
+    <div class="rule-card amber-top">
+      <div class="rule-icon">⏰</div>
+      <h4>3–6 Hour Call Target</h4>
+      <p>All new Meta leads should have a call offered and scheduled within 3–6 hours of first contact. Speed is itself a differentiator from banks.</p>
+    </div>
+    <div class="rule-card amber-top">
+      <div class="rule-icon">💬</div>
+      <h4>Watch the 24h Window</h4>
+      <p>Once a lead replies, you have 24 hours to send free-form messages. After that, you need a pre-approved HSM template to reopen the conversation. Never let hot leads go cold.</p>
+    </div>
+    <div class="rule-card red-top">
+      <div class="rule-icon">⚖️</div>
+      <h4>Never Promise, Always Assess</h4>
+      <p>Do not guarantee approval, quote specific rates, or make superlative claims in chat. Use "assess", "explore", "indicative" — always. MinLaw compliance is non-negotiable.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Response Time Standards</div>
+  <div style="background:var(--white); border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+    <table class="matrix-table">
+      <thead><tr><th>Lead Type</th><th>First Response SLA</th><th>Call Offer SLA</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>New Meta Ad lead (any product)</td><td><span class="sla-fast">Within 5 minutes</span></td><td><span class="sla-urgent">Within 3 hours</span></td><td class="pri-high">HIGH</td></tr>
+        <tr><td>Hot property lead (within 2 weeks)</td><td><span class="sla-urgent">Immediate — notify specialist</span></td><td><span class="sla-urgent">Same day</span></td><td class="pri-high">URGENT</td></tr>
+        <tr><td>Bank-declined / complex profile</td><td><span class="sla-fast">Within 30 minutes</span></td><td><span class="sla-urgent">Within 2 hours</span></td><td class="pri-high">HIGH</td></tr>
+        <tr><td>Website live chat enquiry</td><td><span class="sla-urgent">Immediate (live)</span></td><td><span class="sla-fast">Within same session</span></td><td class="pri-high">HIGH</td></tr>
+        <tr><td>Re-engaged cold lead (Day 7/14)</td><td><span class="sla-fast">Within 1 hour</span></td><td><span class="sla-normal">Within 6 hours</span></td><td class="pri-med">MEDIUM</td></tr>
+        <tr><td>Planning-stage / exploratory lead</td><td><span class="sla-normal">Within 2 hours</span></td><td><span class="sla-normal">Within 24 hours</span></td><td class="pri-low">NORMAL</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SECTION 2 ═══════════════════════════ -->
+<div id="s2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div><h2>Message Sequences</h2></div>
+    <div class="section-desc">Ready-to-use templates for every stage of the funnel</div>
+  </div>
+
+  <!-- SEQ A: New Meta Lead -->
+  <div class="sequence-card">
+    <div class="seq-header">
+      <div class="seq-header-left">
+        <div class="seq-tag">Sequence A · All New Meta Leads</div>
+        <h3>New Lead — General Welcome Flow</h3>
+      </div>
+      <div class="seq-badges">
+        <span class="seq-badge">Automated → Human</span>
+        <span class="seq-badge">Target: call booked within 3–6hrs</span>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="msg-box">
+        <div class="msg-label green">Message 1 · Automated · Immediate on lead entry</div>
+        <p>Hi {{First Name}}! 👋 Thanks for reaching out to Tembusu! We're a direct private lender, specialising in fast, flexible secured financing via property or car.
+
+A little more about us:
+🏦 Trusted private lender since 2018
+📊 2,000+ deals funded across Singapore
+✅ Direct lender — no broker fees, no hidden charges
+⚡ No TDSR restrictions | Same-day assessment
+
+To help you best, could you share the amount you need and purpose of the loan?</p>
+      </div>
+
+      <div class="msg-box">
+        <div class="msg-label green">Message 2 · Human · Within 5 minutes of their reply</div>
+        <p>Thanks for that, {{Mr/Ms Last Name}}! 😊
+
+$[amount] for [purpose] — that's something we can definitely explore with you.
+
+The fastest way to get you a proper assessment is a quick 15-minute call with our loan advisor, [Advisor Name]. She can walk you through your options and let you know what's possible on the same day.
+
+Are you free for a quick call this morning or after lunch today?</p>
+      </div>
+
+      <div class="msg-box warn">
+        <div class="msg-label amber">Message 3 · Only if no reply to Message 2 after 1–2 hours</div>
+        <p>Hi {{First Name}}, just following up! 😊
+
+To get the ball rolling, could you share a couple of quick details so [Advisor Name] can prepare before your call?
+
+• Your company name (if for business)
+• Do you own a private property or vehicle?
+
+This helps us point you to the right option straight away. 🙏</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEQ B: Re-engagement -->
+  <div class="sequence-card">
+    <div class="seq-header" style="background: linear-gradient(135deg, #4a1d96, #2d3748);">
+      <div class="seq-header-left">
+        <div class="seq-tag">Sequence B · Cold Lead Re-Engagement</div>
+        <h3>Wake-Up Flow — Day 7 & Day 14</h3>
+      </div>
+      <div class="seq-badges">
+        <span class="seq-badge">HSM Template Required</span>
+        <span class="seq-badge">Max 2 attempts</span>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="warn-box"><strong>⚠️ HSM Template Required</strong>Both messages below must be submitted to Meta as pre-approved templates before sending, as the 24-hour conversation window will have expired.</div>
+
+      <div class="msg-box">
+        <div class="msg-label green">Day 7 — Soft Check-In</div>
+        <p>Just want you to know we're still here if you have questions or want to explore your options.
+
+Let us know when you're ready 😊
+
+Reply 'STOP' to unsubscribe from our messages.</p>
+        <div class="msg-cta">
+          <span class="msg-btn">✅ Still interested — let's talk</span>
+          <span class="msg-btn">⏳ Not ready yet</span>
+          <span class="msg-btn">❌ No longer needed</span>
+        </div>
+      </div>
+
+      <div class="msg-box">
+        <div class="msg-label green">Day 14 — Final Touch</div>
+        <p>Hi, one last note from us — then we'll give you space. ✉️
+
+We recently helped a client in a similar situation to yours — they weren't sure if they'd qualify, but came in for a chat and left with a plan. Sometimes it just takes one conversation.
+
+If you ever want to explore options — even just to understand what's possible — we're here. You can reach us anytime on WhatsApp or at +65 6741 2588.
+
+Take care 🙏
+
+Reply 'STOP' to unsubscribe from our messages.</p>
+      </div>
+
+      <div class="info-box">After Day 14 with no reply → tag "unresponsive-cold" → move to Cold Pipeline → set 90-day reminder → exit flow. Do not send further automated messages.</div>
+    </div>
+  </div>
+
+  <!-- SEQ C: Opt-In -->
+  <div class="sequence-card">
+    <div class="seq-header" style="background: linear-gradient(135deg, #065f46, #064e3b);">
+      <div class="seq-header-left">
+        <div class="seq-tag">Sequence C · Conversation Window Re-Open</div>
+        <h3>Message Opt-In Template</h3>
+      </div>
+      <div class="seq-badges">
+        <span class="seq-badge">SleekFlow Auto-Send</span>
+        <span class="seq-badge">1 Quick-Reply Button Only</span>
+        <span class="seq-badge">No Variables</span>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="warn-box"><strong>⚠️ Technical Requirement</strong>This template must have exactly 1 quick-reply button, no variables, and no attachments to appear in SleekFlow's opt-in selector. Submit as UTILITY category to Meta.</div>
+      <div class="msg-box">
+        <div class="msg-label green">Opt-In Template · tembusu_message_optin_v1</div>
+        <p>Hi there! This is Tembusu Financial Services. It looks like our conversation has timed out.
+
+Tap the button below to reconnect — we'll pick up right where we left off. 🤝</p>
+        <div class="msg-cta"><span class="msg-btn">↩ Yes, continue our chat</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEQ D: Rejection -->
+  <div class="sequence-card">
+    <div class="seq-header" style="background: linear-gradient(135deg, #7f1d1d, #450a0a);">
+      <div class="seq-header-left">
+        <div class="seq-tag">Sequence D · Decline Templates</div>
+        <h3>Graceful Rejection Messages</h3>
+      </div>
+      <div class="seq-badges">
+        <span class="seq-badge">Always warm, always helpful</span>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="msg-box red">
+        <div class="msg-label red">Non-Singapore Lead (e.g. overseas enquiry)</div>
+        <p>Hi! Thanks so much for reaching out to Tembusu Financial Services. 😊
+
+Unfortunately, we're only licensed to provide financing to businesses and individuals based in Singapore, so we're unable to assist with enquiries from outside Singapore at this time.
+
+We wish you all the best in finding the right financing solution — take care! 🙏</p>
+      </div>
+      <div class="msg-box red">
+        <div class="msg-label red">JTC Leasehold Property (cannot assist)</div>
+        <p>Hi, thank you for your patience while we reviewed this internally. 🙏
+
+Unfortunately, after consulting our specialists, we're unable to assist with financing for JTC leasehold properties. JTC's lease conditions restrict mortgaging to banks and MAS-licensed financial institutions only, so this falls outside what we're able to offer.
+
+For this purchase, we'd recommend approaching the major local banks — DBS, OCBC, and UOB all have commercial property loan teams experienced with JTC industrial properties.
+
+We're sorry we couldn't help on this one, but wish you all the best with the purchase! 😊</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEQ E: Chinese -->
+  <div class="sequence-card">
+    <div class="seq-header" style="background: linear-gradient(135deg, #1e3a5f, #0f2340);">
+      <div class="seq-header-left">
+        <div class="seq-tag">Sequence E · Chinese Language Templates (Simplified)</div>
+        <h3>中文模板 — Mandarin Variants</h3>
+      </div>
+      <div class="seq-badges">
+        <span class="seq-badge">简体中文</span>
+        <span class="seq-badge">For Mandarin-speaking leads</span>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="msg-box">
+        <div class="msg-label green">Welcome Template · 欢迎模板</div>
+        <p>您好，感谢您向 Tembusu 咨询。请提供以下详情，以便我们了解您的贷款需求：
+
+所需金额：
+资金用途：
+您的完整地址：
+*仅供内部房产估值参考</p>
+      </div>
+      <div class="msg-box warn">
+        <div class="msg-label amber">Unanswered Reminder · 未回复提醒 (Day 7)</div>
+        <p>只是想告诉您，如果您有任何疑问或想了解更多选项，我们随时在这里。
+准备好了随时告诉我们 😊</p>
+      </div>
+      <div class="msg-box">
+        <div class="msg-label green">Last Call · 最后跟进 (Day 14)</div>
+        <p>您好，这是我们最后一次联系您——之后我们不会再打扰。✉️
+
+我们最近帮助了一位情况与您相似的客户——他们起初不确定是否符合申请资格，但来聊了一次之后，便找到了适合自己的方案。有时候，一次对话就能改变一切。
+
+如果您随时想了解可能的选项，我们都在。您可以通过 WhatsApp 或致电 +65 6741 2588 联系我们。
+
+保重 🙏</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SECTION 3 ═══════════════════════════ -->
+<div id="s3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div><h2>Scenario Playbooks</h2></div>
+    <div class="section-desc">How to handle specific real-world situations</div>
+  </div>
+
+  <div class="sub-label">Scenario 1 — Lead shares loan amount but gives no other context</div>
+  <div class="msg-box">
+    <div class="msg-label green">Recommended response — go straight for the call</div>
+    <p>Thanks for that! $[amount] for [purpose] — we can definitely explore options with you. 😊
+
+The quickest way to get you a proper picture is a 15-minute call with our loan advisor, [Name]. She can assess your situation and let you know what's available on the same day.
+
+Are you free for a quick call this morning, or would after lunch work better?</p>
+  </div>
+  <div class="info-box">Do not ask for more details before offering the call. Amount + purpose is enough to offer a consultation. Collect everything else on the phone.</div>
+
+  <div class="sub-label">Scenario 2 — Lead mentions being rejected by bank</div>
+  <div class="msg-box">
+    <div class="msg-label green">Empathy-first response — never make them feel judged</div>
+    <p>Hi {{First Name}}, you're in the right place. 👋
+
+Being turned down by a bank is more common than people think — banks have rigid criteria like TDSR limits and payslip requirements. We assess differently.
+
+✔ No TDSR restrictions on most of our products
+✔ We accept varied income sources
+✔ Proprietary underwriting — we look at the full picture, not just a score
+✔ Same-day indicative assessment available
+
+Would you like to speak with one of our specialists directly? I can connect you now or book a call for today. 🙏</p>
+  </div>
+
+  <div class="sub-label">Scenario 3 — Lead asks about a specific property (check these first)</div>
+  <div class="boundary-grid">
+    <div class="boundary-card can">
+      <h4>✓ Can Proceed With Assessment</h4>
+      <div class="boundary-list">
+        <div class="boundary-item">Private residential (condo, landed, apartment)</div>
+        <div class="boundary-item">Freehold or 99-year leasehold private property</div>
+        <div class="boundary-item">Strata commercial / shophouse (private title)</div>
+        <div class="boundary-item">Industrial (private — not JTC)</div>
+        <div class="boundary-item">HDB (for caveat / personal loan structures — confirm with specialist)</div>
+      </div>
+    </div>
+    <div class="boundary-card cannot">
+      <h4>✗ Cannot Assist — Decline Gracefully</h4>
+      <div class="boundary-list">
+        <div class="boundary-item">JTC leasehold industrial/factory properties — JTC restricts mortgaging to MAS-licensed banks only</div>
+        <div class="boundary-item">Properties outside Singapore</div>
+        <div class="boundary-item">Properties with pending JTC change-of-use not yet approved</div>
+        <div class="boundary-item">Government-owned land without assignable leasehold title</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Scenario 4 — Complex deal (JTC / Change of Use / OTP not signed)</div>
+  <div class="msg-box warn">
+    <div class="msg-label amber">Key questions to ask before escalating to specialist</div>
+    <p>1. Is the buyer the property owner, or are they assisting someone? (Broker vs. principal)
+2. Is there a signed OTP or is this still exploratory?
+3. Has JTC Change of Use been applied for and approved? (If applicable)
+4. What is the remaining lease on the property?
+5. What is the purchase price / estimated property value?</p>
+  </div>
+  <div class="info-box">For deals involving JTC properties, change-of-use applications, or multiple parties — always escalate to the property specialist before quoting or assessing. Do not set expectations on WhatsApp.</div>
+
+  <div class="sub-label">Scenario 5 — Vehicle refinancing / PHV equity loan</div>
+  <div class="msg-box">
+    <div class="msg-label green">Response when lead wants to borrow against a fully-paid car</div>
+    <p>Hi! Thanks for reaching out to Tembusu. 😊
+
+Happy to help — this would be a vehicle refinancing loan, where we use your fully paid [car/PHV] as collateral to release cash to you.
+
+To assess your eligibility, could you share a few quick details?
+
+• Estimated value or age of the car:
+• Amount you're looking to borrow:
+• Purpose of the funds:
+
+Our team will take a look and get back to you shortly! 🙏</p>
+  </div>
+
+  <div class="sub-label">Scenario 6 — Re-engaged cold lead who clicks "I'm still interested"</div>
+  <div class="msg-box">
+    <div class="msg-label green">Re-activation response — recap context, go straight for call</div>
+    <p>Hi {{First Name}}, great to hear from you! 😊
+
+I understand you previously enquired about [recap: loan amount + purpose from CRM]. Our team is still here and happy to pick up where we left off.
+
+The quickest way forward is a short call with our loan advisor — are you free for 15 minutes today?</p>
+  </div>
+  <div class="info-box">Always recap the lead's previous enquiry details before asking new questions. Shows you've been paying attention and builds trust immediately on re-engagement.</div>
+</div>
+
+<!-- ═══════════════════════════ SECTION 4 ═══════════════════════════ -->
+<div id="s4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div><h2>FAQ Response Library</h2></div>
+    <div class="section-desc">Ready-to-paste answers for common lead questions</div>
+  </div>
+
+  <!-- General -->
+  <div class="faq-section">
+    <div class="faq-cat-header">
+      <span class="faq-cat-icon">🏦</span>
+      <span class="faq-cat-title">General — About Tembusu</span>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is Tembusu a licensed moneylender?</div>
+      <div class="faq-a">Yes — Tembusu Financial Services is a licensed moneylender regulated by the Ministry of Law (MinLaw) under the Moneylenders Act. We are not a broker. You deal directly with us from enquiry through to disbursement, with no third-party referrals.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are there broker fees or hidden charges?</div>
+      <div class="faq-a">No. We are a <strong>direct lender</strong> — no broker fees, no middlemen, no hidden charges. You'll only be charged once your loan is approved, and all fees are disclosed clearly in your offer letter before you sign anything.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is Tembusu different from a bank?</div>
+      <div class="faq-a">Banks operate under strict MAS regulations including TDSR, rigid credit scoring, and committee-based approvals. We use proprietary capital and our own underwriting model — assessing each borrower's full context rather than just a credit score. This means faster decisions (same-day), more flexibility on eligibility, and no TDSR ceiling on most of our products.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who are the people behind Tembusu?</div>
+      <div class="faq-a">Tembusu was founded by the ex-founders of sgCarMart — Singapore's #1 car marketplace. The leadership team brings over 50 years of combined experience across automotive financing, private lending, and property finance. Every deal is reviewed by senior team members — not a junior committee.</div>
+    </div>
+  </div>
+
+  <!-- Rates & Process -->
+  <div class="faq-section">
+    <div class="faq-cat-header">
+      <span class="faq-cat-icon">💰</span>
+      <span class="faq-cat-title">Rates, Amounts & Process</span>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What interest rates do you charge?</div>
+      <div class="faq-a">Interest rates vary based on loan type, amount, collateral, and your profile. We're not able to quote a rate before assessing your situation — but our rates are competitive and fully disclosed in the offer letter. There are no surprises after disbursement. The best next step is a quick call with our advisor to get an indicative assessment.</div>
+      <div class="faq-flag">⚖️ Do not quote specific rates in chat — MinLaw compliance</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much can I borrow?</div>
+      <div class="faq-a">Our loans range from <strong>$10,000 to $50 million</strong> depending on loan type and collateral. Property-backed loans can go from $100K to $20M in-house. Business loans are assessed case by case. Tell us your requirement and we'll let you know what's realistic for your situation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How fast can I get the money?</div>
+      <div class="faq-a">Once your loan is approved, funds can be disbursed <strong>within 24 hours</strong>. Our assessment is typically completed on the same business day, provided all required documents are submitted. This is significantly faster than the 2–4 week timeline typical of banks.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What documents do I need?</div>
+      <div class="faq-a">This depends on your loan type. As a general guide: NRIC/passport, proof of income or business financials (NOA/statements), and documents related to the collateral (e.g. property title deed, car ownership). Our advisor will give you a precise list after the initial assessment call — we don't make you prepare a stack of documents before we've even had a conversation.</div>
+    </div>
+  </div>
+
+  <!-- Property Loans -->
+  <div class="faq-section">
+    <div class="faq-cat-header">
+      <span class="faq-cat-icon">🏠</span>
+      <span class="faq-cat-title">Property-Backed Loans</span>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a bridging loan and how does it work?</div>
+      <div class="faq-a">A bridging loan is short-term financing that covers the gap between two property transactions — typically when you need to complete a purchase before your current property has sold. Unlike banks, we don't require your existing sale to be confirmed first. If you own property and have a clear exit strategy, we can typically structure a solution quickly. Minimum: $100K. Tenure: up to 12 months.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a caveat loan?</div>
+      <div class="faq-a">A caveat loan lets you access cash by lodging a caveat against your property title as security. It's a property-backed loan that gives you liquidity without selling the property. Suitable for property owners who need funds quickly and have equity in their property. We can typically assess same-day if documents are in order.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get a loan against my HDB flat?</div>
+      <div class="faq-a">HDB properties cannot be mortgaged by private lenders for most standard loan products. However, depending on your situation and what the funds are for, there may be alternative structures available. Speak to our advisor directly — don't rule it out before we've assessed it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get a loan against a JTC property?</div>
+      <div class="faq-a">Unfortunately no. JTC's lease conditions restrict mortgaging of JTC leasehold properties to MAS-licensed banks only. Private lenders like Tembusu are not permitted to take JTC properties as collateral. We'd recommend approaching DBS, OCBC, or UOB for JTC industrial property financing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does TDSR apply to your property loans?</div>
+      <div class="faq-a">TDSR does not apply to most of our property-backed loan products. This is one of our key advantages over banks — borrowers who are blocked by TDSR at a bank can often still qualify with us. Our advisor can confirm TDSR applicability for your specific situation on the call.</div>
+    </div>
+  </div>
+
+  <!-- Car Loans -->
+  <div class="faq-section">
+    <div class="faq-cat-header">
+      <span class="faq-cat-icon">🚗</span>
+      <span class="faq-cat-title">Automotive Loans</span>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get a car loan if I'm self-employed?</div>
+      <div class="faq-a">Yes — this is something we help with regularly. We accept varied income sources including commission, rental income, and business income. We assess your financial situation holistically, not just payslips. Many of our car loan clients are self-employed, freelancers, or small business owners.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I get a car loan as a foreigner / expat?</div>
+      <div class="faq-a">Yes, we do assist foreigners and PRs with car financing. Eligibility depends on your employment pass type, income, and down payment. Speak to our advisor — we assess expat applications on a case-by-case basis and can often find a solution where banks can't.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use my fully paid car to get a cash loan?</div>
+      <div class="faq-a">Yes — this is called a vehicle refinancing or vehicle equity loan. If you own a car outright (including PHV/Grab vehicles), you can borrow against it as collateral. The loan amount depends on the vehicle's current market value. Share your car details and how much you need and we'll assess quickly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you offer COE renewal loans?</div>
+      <div class="faq-a">Yes. We offer COE renewal loans that cover the full COE cost so you're not scrambling for cash when renewal comes around. We recommend planning ahead — contact us at least 1–2 months before your COE expiry for a smooth process.</div>
+    </div>
+  </div>
+
+  <!-- Business Loans -->
+  <div class="faq-section">
+    <div class="faq-cat-header">
+      <span class="faq-cat-icon">🏢</span>
+      <span class="faq-cat-title">Business & SME Loans</span>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does my business need to be operating?</div>
+      <div class="faq-a">We work with businesses from as early as <strong>3 months of operation</strong> for most products. Early-stage businesses may qualify through alternative structures, especially if there are existing assets. Don't assume you won't qualify — have the conversation first.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if my business has been rejected by a bank?</div>
+      <div class="faq-a">Bank rejections are often based on rigid criteria — TDSR limits, minimum revenue thresholds, credit scoring models. We use proprietary underwriting and assess each business on its own merits. Many of our clients come to us after bank rejections and find a workable solution. Share your situation and we'll be straight with you about what's possible.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need collateral for a business loan?</div>
+      <div class="faq-a">Not necessarily. We offer both secured (property-backed) and unsecured business loans. Unsecured loans are assessed based on your business's creditworthiness and financial history. Property-backed loans allow access to larger amounts. Our advisor can recommend the right structure based on your profile.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SECTION 5 ═══════════════════════════ -->
+<div id="s5">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div><h2>Escalation Rules</h2></div>
+    <div class="section-desc">When to hand off to a specialist — and how</div>
+  </div>
+
+  <div style="background:var(--white); border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06); margin-bottom:20px;">
+    <table class="matrix-table">
+      <thead><tr><th>Trigger</th><th>Action</th><th>Assign To</th><th>SLA</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Hot property lead</strong> — needs funds within 1–2 weeks</td>
+          <td>Tag: "hot-property-lead" · Priority flag HIGH</td>
+          <td>Senior Property Specialist</td>
+          <td><span class="sla-urgent">Immediate</span></td>
+        </tr>
+        <tr>
+          <td><strong>Bank-declined / complex profile</strong> — any mention of rejection, TDSR, no payslip</td>
+          <td>Tag: "complex-profile" · Internal note: handle with empathy</td>
+          <td>Senior BDM</td>
+          <td><span class="sla-urgent">30 minutes</span></td>
+        </tr>
+        <tr>
+          <td><strong>Lead asks a question the agent cannot answer</strong> — specific rates, LTV, legal</td>
+          <td>Do not guess. Say: "Let me check with our specialist and come right back to you."</td>
+          <td>Relevant product specialist</td>
+          <td><span class="sla-fast">2 hours</span></td>
+        </tr>
+        <tr>
+          <td><strong>High-value deal</strong> — property loan $1M+ or business loan $500K+</td>
+          <td>Tag: "high-value" · Senior review required before assessment</td>
+          <td>Senior Property / Business Specialist</td>
+          <td><span class="sla-fast">Same day</span></td>
+        </tr>
+        <tr>
+          <td><strong>Complex deal structure</strong> — JTC, change of use, multiple parties, no OTP</td>
+          <td>Do not assess over WhatsApp. Push for call. Brief specialist with all details.</td>
+          <td>Property Specialist</td>
+          <td><span class="sla-fast">Same day</span></td>
+        </tr>
+        <tr>
+          <td><strong>Lead becomes hostile or distressed</strong></td>
+          <td>De-escalate calmly. Do not argue. Escalate to manager if needed.</td>
+          <td>Manager / Senior team</td>
+          <td><span class="sla-urgent">Immediate</span></td>
+        </tr>
+        <tr>
+          <td><strong>Any lead that books a consultation</strong></td>
+          <td>Tag: "consultation-booked" · Notify advisor with full lead context</td>
+          <td>Assigned loan advisor</td>
+          <td><span class="sla-urgent">Before the call</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-label">Briefing Your Specialist — What to Include</div>
+  <div class="msg-box">
+    <div class="msg-label green">Internal handoff note template (SleekFlow internal note)</div>
+    <p>Lead Name: [Name]
+Contact: [Number]
+Source: Meta Ad / Website / Referral
+Enquiry: [Loan type] — $[Amount] — [Purpose]
+Collateral: [Property / Vehicle / None]
+Profile: [Salaried / Self-employed / Foreigner / Business]
+Complexity flags: [e.g. bank-declined / JTC property / no OTP / COE expiry date]
+Urgency: [Hot — within 2 weeks / Standard / Planning stage]
+Call scheduled: [Time / TBC]
+Notes: [Any context from conversation]</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SECTION 6 ═══════════════════════════ -->
+<div id="s6">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div><h2>Product Boundaries</h2></div>
+    <div class="section-desc">What Tembusu can and cannot assist with</div>
+  </div>
+
+  <div class="boundary-grid">
+    <div class="boundary-card can">
+      <h4>✓ Tembusu CAN Assist With</h4>
+      <div class="boundary-list">
+        <div class="boundary-item">Used car loans — salaried, self-employed, expat, bad credit profiles</div>
+        <div class="boundary-item">COE renewal loans for all vehicle types</div>
+        <div class="boundary-item">Vehicle refinancing / equity loans (fully paid cars, PHV)</div>
+        <div class="boundary-item">Car dealer financing / floor stock funding</div>
+        <div class="boundary-item">Bridging loans — private residential and commercial</div>
+        <div class="boundary-item">Caveat loans — property-backed cash out</div>
+        <div class="boundary-item">Mortgage-backed working capital loans</div>
+        <div class="boundary-item">Business / SME loans — secured and unsecured</div>
+        <div class="boundary-item">Businesses from 3 months old</div>
+        <div class="boundary-item">TDSR-exempt financing structures</div>
+        <div class="boundary-item">Borrowers with complex income or credit profiles</div>
+        <div class="boundary-item">Singapore-based leads only</div>
+      </div>
+    </div>
+    <div class="boundary-card cannot">
+      <h4>✗ Tembusu CANNOT Assist With</h4>
+      <div class="boundary-list">
+        <div class="boundary-item">JTC leasehold industrial / factory properties — MAS banks only</div>
+        <div class="boundary-item">Loans to individuals or businesses outside Singapore</div>
+        <div class="boundary-item">HDB flat mortgages (standard) — private lenders cannot mortgage HDB</div>
+        <div class="boundary-item">Properties with unresolved title or pending JTC approvals (assess case by case)</div>
+        <div class="boundary-item">New cars from authorised dealers (used cars only)</div>
+        <div class="boundary-item">Personal loans for accredited investors only (specialised product — refer to specialist)</div>
+        <div class="boundary-item">Investment advice or financial planning</div>
+        <div class="boundary-item">Loans to overseas companies with no Singapore nexus</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box" style="margin-top:16px;">
+    <strong>⚠️ When in Doubt — Ask Before Declining</strong>
+    Some edge cases (e.g. HDB with personal loan structure, early-stage startups, complex foreign national profiles) may still have workable solutions. Never decline without checking with a specialist first. The rule is: if it's in the "cannot" list above, it's a hard no. Everything else — ask.
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SECTION 7 ═══════════════════════════ -->
+<div id="s7">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div><h2>Compliance Rules</h2></div>
+    <div class="section-desc">MinLaw Advertising Directions — non-negotiable</div>
+  </div>
+
+  <div style="background:var(--white); border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.06); margin-bottom:20px;">
+    <table class="comp-table">
+      <thead><tr><th>Category</th><th>❌ Never Say This</th><th>✅ Say This Instead</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Approval speed</strong></td>
+          <td>"Guaranteed approval in 24 hours"<br>"Instant approval"</td>
+          <td>"Same-day assessment available"<br>"Funds disbursed within 24 hours of approval"</td>
+        </tr>
+        <tr>
+          <td><strong>Approval certainty</strong></td>
+          <td>"We'll definitely approve you"<br>"100% approval rate"<br>"Guaranteed to qualify"</td>
+          <td>"We'll assess your situation"<br>"We'll explore what's possible"<br>"Indicative assessment"</td>
+        </tr>
+        <tr>
+          <td><strong>Interest rates</strong></td>
+          <td>"Lowest rates in Singapore"<br>"1% per month guaranteed"<br>"Better rates than banks"</td>
+          <td>"Competitive rates — disclosed in offer letter"<br>"Rates quoted after assessment"</td>
+        </tr>
+        <tr>
+          <td><strong>Superlatives</strong></td>
+          <td>"Singapore's best lender"<br>"#1 approval rate"<br>"Most trusted"</td>
+          <td>"Trusted private lender since 2018"<br>"2,000+ deals funded"<br>"50+ years combined experience"</td>
+        </tr>
+        <tr>
+          <td><strong>Transaction figures</strong></td>
+          <td>"$1 billion in transactions" (in Meta ad-connected messages)</td>
+          <td>Use in organic WhatsApp follow-ups only, not in Meta lead ad automations</td>
+        </tr>
+        <tr>
+          <td><strong>Opt-out</strong></td>
+          <td>Sending messages without an opt-out option</td>
+          <td>Include "Reply 'STOP' to unsubscribe" in all HSM broadcast templates</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-label">SleekFlow Technical Compliance Checklist</div>
+  <div class="three-col">
+    <div class="rule-card">
+      <div class="rule-icon">📋</div>
+      <h4>HSM Templates</h4>
+      <p>All outbound messages outside the 24h window require pre-approved Meta templates. Submit as UTILITY (not MARKETING) to reduce per-conversation costs. Allow 24–72h for approval.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🔘</div>
+      <h4>Opt-In Template Rules</h4>
+      <p>The Message Opt-In template must have exactly 1 quick-reply button, no variables, and no attachments. Assign it under Settings → WhatsApp Official API → Message Opt-In Button.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🏷️</div>
+      <h4>Tag Hygiene</h4>
+      <p>Maintain consistent tags: segment (auto-lead, property-lead, sme-lead), status (qualified, hot, cold, nurture), and profile (self-employed, foreigner, bank-declined). Clean tags = clean CRM.</p>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end main -->
+
+<div class="playbook-footer">
+  <strong>Tembusu Financial Services — WhatsApp CRM Customer Engagement Playbook</strong><br>
+  Version 1.0 · April 2026 · Internal Use Only · Not for distribution<br>
+  Questions? Speak to the Marketing team · tembusufs.com · +65 6741 2588
+</div>
+
+</body>
+</html>

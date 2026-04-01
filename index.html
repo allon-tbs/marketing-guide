@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Marketing Guidelines — Tembusu Financial Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --emerald:       #005a3d;
+    --emerald-deep:  #003d2a;
+    --emerald-mid:   #00754f;
+    --yellow:        #E3EF26;
+    --charcoal:      #2E2E2E;
+    --beige:         #F5F0E8;
+    --beige-dark:    #EAE4D6;
+    --white:         #FFFFFF;
+    --muted:         #6b7c74;
+    --rule:          #DDD8CE;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--beige);
+    color: var(--charcoal);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--emerald);
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    right: -50px;
+    top: -70px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid rgba(227,239,38,0.12);
+    pointer-events: none;
+  }
+  .header-logo {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.3px;
+  }
+  .header-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    opacity: 0.85;
+  }
+
+  /* ── NEON RULE ── */
+  .neon-rule {
+    height: 2px;
+    background: linear-gradient(to right, var(--yellow), transparent);
+    opacity: 0.25;
+    border: none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--emerald-deep);
+    padding: 64px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 4px; height: 60%;
+    background: var(--yellow);
+    border-radius: 0 3px 3px 0;
+    opacity: 0.5;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 60px; bottom: -80px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(227,239,38,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+  .hero h1 {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 620px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--yellow);
+  }
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    max-width: 500px;
+    line-height: 1.75;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 60px 80px;
+    flex: 1;
+    width: 100%;
+  }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    background: var(--white);
+    border-left: 4px solid var(--emerald);
+    padding: 28px 36px;
+    margin-bottom: 56px;
+    box-shadow: 0 2px 18px rgba(0,90,61,0.06);
+  }
+  .section-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .intro-band p {
+    font-size: 14px;
+    color: var(--charcoal);
+    line-height: 1.8;
+    max-width: 820px;
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .section-heading h2 {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--emerald-deep);
+  }
+  .section-heading-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  .doc-count {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .doc-card {
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0,90,61,0.07);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .doc-card:hover {
+    box-shadow: 0 10px 40px rgba(0,90,61,0.15);
+    transform: translateY(-3px);
+  }
+
+  .card-accent {
+    height: 4px;
+    background: var(--emerald);
+    position: relative;
+  }
+  .card-accent::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 48px; height: 100%;
+    background: var(--yellow);
+  }
+
+  .card-inner {
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-tag {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--emerald-mid);
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--emerald-deep);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: #4e6259;
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+
+  .card-footer {
+    border-top: 1px solid var(--beige-dark);
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-filename {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.2px;
+  }
+  .card-cta {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--emerald);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-cta svg {
+    transition: transform 0.2s;
+  }
+  .doc-card:hover .card-cta svg {
+    transform: translateX(4px);
+  }
+
+  /* ── HOW TO USE BAND ── */
+  .how-to-band {
+    background: var(--emerald);
+    padding: 44px 52px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+  .how-to-band::before {
+    content: '\2767';
+    position: absolute;
+    right: 48px; top: 20px;
+    font-size: 120px;
+    color: rgba(227,239,38,0.06);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .how-to-band .section-label {
+    color: rgba(227,239,38,0.75);
+    margin-bottom: 24px;
+  }
+  .how-to-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .how-to-item {}
+  .how-to-num {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(227,239,38,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .how-to-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .how-to-desc {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--emerald-deep);
+    padding: 22px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.3px;
+  }
+  footer span { color: var(--yellow); opacity: 0.65; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 760px) {
+    header, .hero, main, footer { padding-left: 24px; padding-right: 24px; }
+    .how-to-grid { grid-template-columns: 1fr; gap: 24px; }
+    .how-to-band { padding: 36px 28px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    main { padding: 40px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-logo">Tembusu Financial Services</div>
+  <span class="header-label">Marketing Guidelines</span>
+</header>
+<hr class="neon-rule">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Repository Index &amp; Glossary</div>
+  <h1>Brand &amp; Marketing<br><em>Guidelines.</em></h1>
+  <p class="hero-sub">A central reference for Tembusu's brand strategy, messaging frameworks, and channel playbooks — built to keep every communication consistent, credible, and on-brand.</p>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- DOCUMENT GLOSSARY -->
+  <div class="section-heading">
+    <h2>Documents</h2>
+    <div class="section-heading-rule"></div>
+    <span class="doc-count">3 files</span>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- Card 1: Mission & Vision -->
+    <a class="doc-card" href="tembusu_mission_vision.html">
+      <div class="card-accent"></div>
+      <div class="card-inner">
+        <span class="card-tag">Brand Positioning</span>
+        <div class="card-title">Mission &amp; Vision Statements</div>
+        <p class="card-desc">Defines why Tembusu exists and where it is going. Includes full mission and vision statements, condensed single-line forms, and guidance on when to apply each version.</p>
+        <div class="card-footer">
+          <span class="card-filename">tembusu_mission_vision.html</span>
+          <span class="card-cta">
+            Open
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="#005a3d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 2: Value Proposition -->
+    <a class="doc-card" href="tembusu_value_proposition.html">
+      <div class="card-accent"></div>
+      <div class="card-inner">
+        <span class="card-tag">Messaging Framework</span>
+        <div class="card-title">Value Proposition Framework</div>
+        <p class="card-desc">A structured breakdown of Tembusu's value proposition across key borrower segments. Covers customer pain points, Tembusu's differentiated response, and persona-specific messaging for sales and marketing.</p>
+        <div class="card-footer">
+          <span class="card-filename">tembusu_value_proposition.html</span>
+          <span class="card-cta">
+            Open
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="#005a3d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card 3: WhatsApp Playbook -->
+    <a class="doc-card" href="tembusu_whatsapp_playbook.html">
+      <div class="card-accent"></div>
+      <div class="card-inner">
+        <span class="card-tag">Channel Playbook</span>
+        <div class="card-title">WhatsApp CRM Engagement Playbook</div>
+        <p class="card-desc">A sequence-by-sequence guide to managing borrower relationships over WhatsApp. Covers message templates, follow-up cadences, escalation protocols, and compliance boundaries for CRM outreach.</p>
+        <div class="card-footer">
+          <span class="card-filename">tembusu_whatsapp_playbook.html</span>
+          <span class="card-cta">
+            Open
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="#005a3d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="how-to-band">
+    <span class="section-label">How To Use These Documents</span>
+    <div class="how-to-grid">
+      <div class="how-to-item">
+        <div class="how-to-num">01</div>
+        <div class="how-to-title">Start with Mission &amp; Vision</div>
+        <p class="how-to-desc">Before creating any external material, ground your work in the mission and vision statements. They define the tone and intent everything else should reflect.</p>
+      </div>
+      <div class="how-to-item">
+        <div class="how-to-num">02</div>
+        <div class="how-to-title">Apply the Value Proposition</div>
+        <p class="how-to-desc">Use the framework to tailor messaging for the specific borrower segment you're speaking to — whether SME owner, property investor, or individual with TDSR constraints.</p>
+      </div>
+      <div class="how-to-item">
+        <div class="how-to-num">03</div>
+        <div class="how-to-title">Follow Channel Playbooks</div>
+        <p class="how-to-desc">For day-to-day CRM engagement, consult the relevant channel playbook to ensure cadence, tone, and compliance rules are applied consistently across all touchpoints.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>Prepared for <span>Tembusu Financial Services</span> · Marketing Guidelines · 2026 · Confidential</p>
+  <p>tembusufs.com</p>
+</footer>
+
+</body>
+</html>
