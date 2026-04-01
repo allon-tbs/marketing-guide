@@ -33,15 +33,26 @@
     flex-direction: column;
   }
 
+  /* ── SHARED INNER WRAPPER ── */
+  .page-wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 60px;
+    width: 100%;
+  }
+
   /* ── HEADER ── */
   header {
     background: var(--emerald);
-    padding: 28px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  header .page-wrap {
+    padding-top: 28px;
+    padding-bottom: 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    overflow: hidden;
   }
   header::after {
     content: '';
@@ -81,9 +92,12 @@
   /* ── HERO ── */
   .hero {
     background: var(--emerald-deep);
-    padding: 64px 60px 60px;
     position: relative;
     overflow: hidden;
+  }
+  .hero .page-wrap {
+    padding-top: 64px;
+    padding-bottom: 60px;
   }
   .hero::before {
     content: '';
@@ -343,7 +357,10 @@
   /* ── FOOTER ── */
   footer {
     background: var(--emerald-deep);
-    padding: 22px 60px;
+  }
+  footer .page-wrap {
+    padding-top: 22px;
+    padding-bottom: 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -357,7 +374,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 760px) {
-    header, .hero, main, footer { padding-left: 24px; padding-right: 24px; }
+    .page-wrap, main { padding-left: 24px; padding-right: 24px; }
     .how-to-grid { grid-template-columns: 1fr; gap: 24px; }
     .how-to-band { padding: 36px 28px; }
     .cards-grid { grid-template-columns: 1fr; }
@@ -369,16 +386,20 @@
 
 <!-- HEADER -->
 <header>
-  <div class="header-logo">Tembusu Financial Services</div>
-  <span class="header-label">Marketing Guidelines</span>
+  <div class="page-wrap">
+    <div class="header-logo">Tembusu Financial Services</div>
+    <span class="header-label">Marketing Guidelines</span>
+  </div>
 </header>
 <hr class="neon-rule">
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Repository Index &amp; Glossary</div>
-  <h1>Brand &amp; Marketing<br><em>Guidelines.</em></h1>
-  <p class="hero-sub">A central reference for Tembusu's brand strategy, messaging frameworks, and channel playbooks — built to keep every communication consistent, credible, and on-brand.</p>
+  <div class="page-wrap">
+    <div class="hero-eyebrow">Repository Index &amp; Glossary</div>
+    <h1>Brand &amp; Marketing<br><em>Guidelines.</em></h1>
+    <p class="hero-sub">A central reference for Tembusu's brand strategy, messaging frameworks, and channel playbooks — built to keep every communication consistent, credible, and on-brand.</p>
+  </div>
 </div>
 
 <!-- MAIN -->
@@ -399,7 +420,7 @@
       <div class="card-inner">
         <span class="card-tag">Brand Positioning</span>
         <div class="card-title">Mission &amp; Vision Statements</div>
-        <p class="card-desc">Defines why Tembusu exists and where it is going. Includes full mission and vision statements, condensed single-line forms, and guidance on when to apply each version.</p>
+        <p class="card-desc">Full mission and vision statements, condensed single-line forms, and guidance on when to apply each.</p>
         <div class="card-footer">
           <span class="card-filename">tembusu_mission_vision.html</span>
           <span class="card-cta">
@@ -418,7 +439,7 @@
       <div class="card-inner">
         <span class="card-tag">Messaging Framework</span>
         <div class="card-title">Value Proposition Framework</div>
-        <p class="card-desc">A structured breakdown of Tembusu's value proposition across key borrower segments. Covers customer pain points, Tembusu's differentiated response, and persona-specific messaging for sales and marketing.</p>
+        <p class="card-desc">Tembusu's value proposition broken down by borrower segment, with persona-specific messaging for sales and marketing.</p>
         <div class="card-footer">
           <span class="card-filename">tembusu_value_proposition.html</span>
           <span class="card-cta">
@@ -437,7 +458,7 @@
       <div class="card-inner">
         <span class="card-tag">Channel Playbook</span>
         <div class="card-title">WhatsApp CRM Engagement Playbook</div>
-        <p class="card-desc">A sequence-by-sequence guide to managing borrower relationships over WhatsApp. Covers message templates, follow-up cadences, escalation protocols, and compliance boundaries for CRM outreach.</p>
+        <p class="card-desc">Message templates, follow-up cadences, escalation protocols, and compliance boundaries for WhatsApp CRM outreach.</p>
         <div class="card-footer">
           <span class="card-filename">tembusu_whatsapp_playbook.html</span>
           <span class="card-cta">
@@ -478,8 +499,10 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>Prepared for <span>Tembusu Financial Services</span> · Marketing Guidelines · 2026 · Confidential</p>
-  <p>tembusufs.com</p>
+  <div class="page-wrap">
+    <p>Prepared for <span>Tembusu Financial Services</span> · Marketing Guidelines · 2026 · Confidential</p>
+    <p>tembusufs.com</p>
+  </div>
 </footer>
 
 </body>
