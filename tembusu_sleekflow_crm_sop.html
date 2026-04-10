@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tembusu Financial Services — SleekFlow CRM SOP</title>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --emerald: #005a3d;
+    --emerald-mid: #00a36e;
+    --emerald-light: #e6f4ee;
+    --emerald-dark: #003d29;
+    --yellow: #E3EF26;
+    --charcoal: #2E2E2E;
+    --white: #FFFFFF;
+    --beige: #F5F0E8;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --progressing-bg: #f0fdf4;
+    --progressing-border: #bbf7d0;
+    --progressing-header: #166534;
+    --lost-bg: #fff1f2;
+    --lost-border: #fecdd3;
+    --lost-header: #9f1239;
+
+    /* Stage colours matching SleekFlow screenshot */
+    --c-new-lead: #ef4444;
+    --c-contacted: #f97316;
+    --c-qualified: #eab308;
+    --c-sales-call: #84cc16;
+    --c-obtain-docs: #10b981;
+    --c-refer-out: #10b981;
+    --c-build-case: #0d9488;
+    --c-partner-engaged: #0f766e;
+    --c-credit-comm: #3b82f6;
+    --c-tbs-won: #2563eb;
+    --c-partner-won: #1d4ed8;
+    --c-low-value: #f9a8d4;
+    --c-mia: #ec4899;
+    --c-too-exp: #c084fc;
+    --c-other-funders: #a855f7;
+    --c-tbs-reject: #9ca3af;
+    --c-partner-reject: #6b7280;
+  }
+
+  html { scroll-behavior: smooth; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gray-100);
+    color: var(--charcoal);
+    min-height: 100vh;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+    padding: 40px 48px 36px;
+    position: relative; overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(227,239,38,0.1) 0%, transparent 70%);
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(227,239,38,0.15);
+    border: 1px solid rgba(227,239,38,0.3);
+    color: var(--yellow);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-family: 'Vollkorn', Georgia, serif;
+    font-size: 34px; font-weight: 700;
+    color: var(--white); line-height: 1.2; margin-bottom: 8px;
+  }
+  .page-header h1 span { color: var(--yellow); }
+  .page-header p {
+    color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 300;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 1100px; margin: 0 auto;
+    padding: 36px 24px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ── PANEL ── */
+  .panel {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .panel-header {
+    padding: 20px 24px 18px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .panel-header.progressing { background: var(--progressing-bg); border-bottom-color: var(--progressing-border); }
+  .panel-header.lost { background: var(--lost-bg); border-bottom-color: var(--lost-border); }
+
+  .panel-title {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .panel-icon { font-size: 20px; }
+  .panel-title h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--gray-700);
+  }
+  .panel-header.progressing .panel-title h2 { color: var(--progressing-header); }
+  .panel-header.lost .panel-title h2 { color: var(--lost-header); }
+  .panel-header p {
+    font-size: 13px; color: var(--gray-500); line-height: 1.5;
+  }
+
+  /* ── STAGE LIST ── */
+  .stage-list { padding: 8px 0; }
+
+  .stage-row {
+    display: flex; align-items: flex-start; gap: 0;
+    padding: 14px 20px 14px 16px;
+    border-bottom: 1px solid var(--gray-200);
+    transition: background 0.15s;
+  }
+  .stage-row:last-child { border-bottom: none; }
+  .stage-row:hover { background: var(--gray-50); }
+
+  /* Drag handle */
+  .drag-handle {
+    display: flex; align-items: center;
+    padding: 2px 10px 0 0;
+    color: var(--gray-300);
+    font-size: 14px; cursor: grab;
+    flex-shrink: 0; align-self: center;
+    letter-spacing: -1px; line-height: 1;
+  }
+
+  /* Colour dot */
+  .stage-dot {
+    width: 36px; height: 36px; border-radius: 10px;
+    flex-shrink: 0; margin-right: 14px;
+    align-self: center;
+  }
+
+  /* Stage content */
+  .stage-content { flex: 1; min-width: 0; }
+
+  .stage-name-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 4px;
+  }
+  .stage-name {
+    font-size: 14px; font-weight: 600;
+    color: var(--gray-700);
+  }
+  .default-badge {
+    font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #2563eb; background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 2px 8px; border-radius: 20px;
+  }
+
+  .stage-desc {
+    font-size: 12.5px; color: var(--gray-500); line-height: 1.6;
+  }
+  .stage-desc .truncated { display: inline; }
+  .stage-desc .full { display: none; }
+  .stage-desc .read-more {
+    color: var(--emerald); font-weight: 600;
+    cursor: pointer; font-size: 12px;
+    text-decoration: none; margin-left: 3px;
+    white-space: nowrap;
+  }
+  .stage-desc .read-more:hover { text-decoration: underline; }
+  .stage-desc .read-less {
+    color: var(--gray-400); font-weight: 500;
+    cursor: pointer; font-size: 12px;
+    text-decoration: none; margin-left: 3px;
+    display: none; white-space: nowrap;
+  }
+  .stage-desc .read-less:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.4);
+    text-align: center; padding: 22px;
+    font-size: 12px;
+  }
+  .page-footer strong { color: var(--white); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .main { grid-template-columns: 1fr; }
+    .page-header { padding: 28px 20px; }
+    .page-header h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-badge">SleekFlow CRM · Internal SOP</div>
+    <h1>Customer Lifecycle <span>Stage Definitions</span></h1>
+    <p>Tembusu Financial Services · SleekFlow CRM Standard Operating Procedure · April 2026</p>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main">
+
+  <!-- ══════════════════════════════════ -->
+  <!-- PROGRESSING PANEL -->
+  <!-- ══════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header progressing">
+      <div class="panel-title">
+        <span class="panel-icon">↗</span>
+        <h2>Progressing stages</h2>
+      </div>
+      <p>Stages for contacts that are currently engaging or moving forward in your customer lifecycle.</p>
+    </div>
+
+    <div class="stage-list">
+
+      <!-- 1. New Lead -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-new-lead);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">New Lead</span>
+            <span class="default-badge">DEFAULT</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">A contact has entered the CRM for the first time — via Meta ad, website enquiry, live chat, or WhatsApp inbound.</span>
+            <span class="full"> No meaningful interaction has taken place yet. Automated welcome message may have been sent.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2. Contacted -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-contacted);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Contacted</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">The team has made first contact and received a reply.</span>
+            <span class="full"> A two-way conversation has been initiated but the lead has not yet been assessed or qualified.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3. Qualified -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-qualified);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Qualified</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">The lead has shared sufficient information (loan type, amount, purpose, collateral) to determine they are a potential fit for Tembusu's products or a referral partner.</span>
+            <span class="full"> A sales call has been proposed.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4. Sales Call -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-sales-call);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Sales Call</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">A call has been scheduled or completed with the loan advisor.</span>
+            <span class="full"> The team is actively assessing the lead's requirements and presenting suitable financing options.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 5. Obtain Docs -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-obtain-docs);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Obtain Docs</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">The lead has indicated intent to proceed.</span>
+            <span class="full"> The team is collecting required documents (NRIC, NOA, payslips, CBS, property details, etc.) for formal loan assessment or referral processing.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 6. Refer Out -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-refer-out);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Refer Out</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">The lead does not qualify for Tembusu's own products but has consented to referral to a financing partner.</span>
+            <span class="full"> Documents are being or have been forwarded to the relevant partner. Tembusu earns a referral commission on successful cases.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 7. Build Case -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-build-case);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Build Case</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">The lead qualifies for a Tembusu loan and the team is actively structuring the offer.</span>
+            <span class="full"> This includes conducting property valuation, finalising terms, and preparing the offer letter.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 8. Partner Engaged -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-partner-engaged);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Partner Engaged</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">A financing partner has been formally engaged on a referred case and is actively reviewing or processing the lead's application.</span>
+            <span class="full"> Tembusu is monitoring progress pending the partner's decision.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 9. Credit Comm -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-credit-comm);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Credit Comm</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">The loan case has been submitted to Tembusu's internal credit committee for final review and approval.</span>
+            <span class="full"> All documents have been collected and the case has been assessed and endorsed for committee sign-off. Applicable to Tembusu direct loans only.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 10. TBS Won -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-tbs-won);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">TBS Won</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">Tembusu's credit committee has approved the loan and the offer letter has been accepted by the borrower.</span>
+            <span class="full"> The loan has been successfully disbursed. Case is closed as won for Tembusu.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 11. Partner Won -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-partner-won);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Partner Won</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">A referred case has been successfully approved and disbursed by the financing partner.</span>
+            <span class="full"> Tembusu's referral commission is due or has been received. Case is closed as won via partner.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ -->
+  <!-- LOST PANEL -->
+  <!-- ══════════════════════════════════ -->
+  <div class="panel">
+    <div class="panel-header lost">
+      <div class="panel-title">
+        <span class="panel-icon">↘</span>
+        <h2>Lost stages</h2>
+      </div>
+      <p>Stages for contacts that are no longer progressing in your customer lifecycle, such as when a conversation, deal, or case has ended.</p>
+    </div>
+
+    <div class="stage-list">
+
+      <!-- 1. Low Value -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-low-value);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Low Value (&lt;$1K)</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">Lead is seeking a loan amount below Tembusu's minimum threshold.</span>
+            <span class="full"> Declined at first contact with a polite rejection message. No referral made.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 2. MIA -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-mia);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">MIA</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">Lead became unresponsive after initial contact or during qualification.</span>
+            <span class="full"> Re-engagement sequences (Day 7, Day 14) have been exhausted with no reply.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3. Lost – Too Exp -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-too-exp);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Lost – Too Exp</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">Lead was presented with loan terms but declined to proceed due to interest rates or fees being outside their acceptable range.</span>
+            <span class="full"> No further negotiation was possible within Tembusu's approved parameters.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4. Lost – Other Funders -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-other-funders);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Lost – Other Funders</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">Lead chose to proceed with another lender or financing institution instead of Tembusu.</span>
+            <span class="full"> Case is closed with no further action required.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 5. TBS Reject -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-tbs-reject);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">TBS Reject</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">Lead does not meet Tembusu's internal lending criteria.</span>
+            <span class="full"> Reasons may include insufficient collateral, unsupported property type (e.g. JTC leasehold), overseas applicant, or profile assessed as too high-risk.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 6. Partner Reject -->
+      <div class="stage-row">
+        <span class="drag-handle">⠿</span>
+        <div class="stage-dot" style="background:var(--c-partner-reject);"></div>
+        <div class="stage-content">
+          <div class="stage-name-row">
+            <span class="stage-name">Partner Reject</span>
+          </div>
+          <div class="stage-desc">
+            <span class="truncated">Lead was referred to a financing partner but did not meet the partner's qualifying criteria.</span>
+            <span class="full"> No further referral options are available. Case is closed with no commission earned.</span>
+            <a class="read-more" onclick="toggleDesc(this)">Read more</a>
+            <a class="read-less" onclick="toggleDesc(this)">Read less</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <strong>Tembusu Financial Services</strong> · SleekFlow CRM SOP · April 2026 · Internal Use Only
+</div>
+
+<script>
+  function toggleDesc(el) {
+    const descBlock = el.closest('.stage-desc');
+    const full = descBlock.querySelector('.full');
+    const readMore = descBlock.querySelector('.read-more');
+    const readLess = descBlock.querySelector('.read-less');
+    const isExpanded = full.style.display === 'inline';
+
+    if (isExpanded) {
+      full.style.display = 'none';
+      readMore.style.display = 'inline';
+      readLess.style.display = 'none';
+    } else {
+      full.style.display = 'inline';
+      readMore.style.display = 'none';
+      readLess.style.display = 'inline';
+    }
+  }
+</script>
+
+</body>
+</html>

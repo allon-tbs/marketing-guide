@@ -31,6 +31,8 @@
     --amber-light: #fffbeb;
   }
 
+  html { scroll-behavior: smooth; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -94,6 +96,10 @@
     padding: 0 60px;
     display: flex; gap: 0; overflow-x: auto;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
   }
   .toc-item {
     padding: 14px 20px;
@@ -410,6 +416,43 @@
   }
   .playbook-footer strong { color: var(--white); }
 
+  @media (max-width: 768px) {
+    /* Cover */
+    .cover { padding: 36px 24px 32px; }
+    .cover h1 { font-size: 30px; }
+    .cover-meta { flex-direction: column; gap: 10px; }
+    .header-logo { display: none; }
+
+    /* Nav */
+    .toc-bar { padding: 0 8px; justify-content: flex-start; }
+
+    /* Main */
+    .main { padding: 0 16px 60px; }
+
+    /* Section header */
+    .section-header { flex-wrap: wrap; gap: 10px; }
+    .section-header .section-desc { text-align: left; max-width: 100%; }
+
+    /* All multi-column grids → 1 column */
+    .rule-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
+    .boundary-grid { grid-template-columns: 1fr; }
+
+    /* Sequence card header */
+    .seq-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .seq-badges { flex-wrap: wrap; }
+
+    /* Tables — allow horizontal scroll */
+    .matrix-table, .comp-table { display: block; overflow-x: auto; white-space: nowrap; }
+
+    /* WA phone */
+    .wa-phone { max-width: 100%; }
+
+    /* Cover meta */
+    .cover-meta-item { font-size: 11px; }
+  }
+
   @media print {
     .toc-bar { display: none; }
     .cover { min-height: auto; }
@@ -494,7 +537,7 @@
     <table class="matrix-table">
       <thead><tr><th>Lead Type</th><th>First Response SLA</th><th>Call Offer SLA</th><th>Priority</th></tr></thead>
       <tbody>
-        <tr><td>New Meta Ad lead (any product)</td><td><span class="sla-fast">Within 5 minutes</span></td><td><span class="sla-urgent">Within 3 hours</span></td><td class="pri-high">HIGH</td></tr>
+        <tr><td>New Meta Ad lead (any product)</td><td><span class="sla-fast">Within 15 minutes</span></td><td><span class="sla-urgent">Within 3 hours</span></td><td class="pri-high">HIGH</td></tr>
         <tr><td>Hot property lead (within 2 weeks)</td><td><span class="sla-urgent">Immediate — notify specialist</span></td><td><span class="sla-urgent">Same day</span></td><td class="pri-high">URGENT</td></tr>
         <tr><td>Bank-declined / complex profile</td><td><span class="sla-fast">Within 30 minutes</span></td><td><span class="sla-urgent">Within 2 hours</span></td><td class="pri-high">HIGH</td></tr>
         <tr><td>Website live chat enquiry</td><td><span class="sla-urgent">Immediate (live)</span></td><td><span class="sla-fast">Within same session</span></td><td class="pri-high">HIGH</td></tr>
@@ -528,36 +571,30 @@
     <div class="seq-body">
       <div class="msg-box">
         <div class="msg-label green">Message 1 · Automated · Immediate on lead entry</div>
-        <p>Hi {{First Name}}! 👋 Thanks for reaching out to Tembusu! We're a direct private lender, specialising in fast, flexible secured financing via property or car.
+        <p>Hi! 👋 Thanks for reaching out! To assist you, could you share the amount you need &amp; purpose of the loan?
 
-A little more about us:
-🏦 Trusted private lender since 2018
-📊 2,000+ deals funded across Singapore
+A little more about us: We're a direct private lender, specialising in secured financing via property or car.
+🏦 Trusted since 2018
+📊 2,000+ deals funded
 ✅ Direct lender — no broker fees, no hidden charges
-⚡ No TDSR restrictions | Same-day assessment
-
-To help you best, could you share the amount you need and purpose of the loan?</p>
+⚡ No TDSR. Approval in 24 hours</p>
       </div>
 
       <div class="msg-box">
         <div class="msg-label green">Message 2 · Human · Within 5 minutes of their reply</div>
-        <p>Thanks for that, {{Mr/Ms Last Name}}! 😊
+        <p>Thanks! The fastest way to get you a proper assessment is a quick 15-minute call with our loan advisor, [Advisor Name]. She can walk you through your options and let you know what's possible.
 
-$[amount] for [purpose] — that's something we can definitely explore with you.
-
-The fastest way to get you a proper assessment is a quick 15-minute call with our loan advisor, [Advisor Name]. She can walk you through your options and let you know what's possible on the same day.
-
-Are you free for a quick call this morning or after lunch today?</p>
+Free for a quick call sometime later today?</p>
       </div>
 
       <div class="msg-box warn">
         <div class="msg-label amber">Message 3 · Only if no reply to Message 2 after 1–2 hours</div>
-        <p>Hi {{First Name}}, just following up! 😊
+        <p>Hi, just following up!
 
-To get the ball rolling, could you share a couple of quick details so [Advisor Name] can prepare before your call?
+Could you share a couple of quick details so [Advisor Name] can prepare before your call?
 
 • Your company name (if for business)
-• Do you own a private property or vehicle?
+• Do you own a private property, condo, or vehicle?
 
 This helps us point you to the right option straight away. 🙏</p>
       </div>
@@ -665,48 +702,31 @@ For this purchase, we'd recommend approaching the major local banks — DBS, OCB
 
 We're sorry we couldn't help on this one, but wish you all the best with the purchase! 😊</p>
       </div>
-    </div>
-  </div>
+      <div class="msg-box red">
+        <div class="msg-label red">Small / Unsecured Personal Loan (credit card debt, medical fees, &lt;$10K)</div>
+        <p>Hi {{First Name}}, thanks for reaching out to Tembusu! 😊
 
-  <!-- SEQ E: Chinese -->
-  <div class="sequence-card">
-    <div class="seq-header" style="background: linear-gradient(135deg, #1e3a5f, #0f2340);">
-      <div class="seq-header-left">
-        <div class="seq-tag">Sequence E · Chinese Language Templates (Simplified)</div>
-        <h3>中文模板 — Mandarin Variants</h3>
-      </div>
-      <div class="seq-badges">
-        <span class="seq-badge">简体中文</span>
-        <span class="seq-badge">For Mandarin-speaking leads</span>
-      </div>
-    </div>
-    <div class="seq-body">
-      <div class="msg-box">
-        <div class="msg-label green">Welcome Template · 欢迎模板</div>
-        <p>您好，感谢您向 Tembusu 咨询。请提供以下详情，以便我们了解您的贷款需求：
+We specialise in secured financing — property-backed and automotive loans — so unfortunately we're not the right fit for smaller personal or unsecured loan needs.
 
-所需金额：
-资金用途：
-您的完整地址：
-*仅供内部房产估值参考</p>
+We wish you all the best in finding a solution. Take care! 🙏</p>
       </div>
       <div class="msg-box warn">
-        <div class="msg-label amber">Unanswered Reminder · 未回复提醒 (Day 7)</div>
-        <p>只是想告诉您，如果您有任何疑问或想了解更多选项，我们随时在这里。
-准备好了随时告诉我们 😊</p>
-      </div>
-      <div class="msg-box">
-        <div class="msg-label green">Last Call · 最后跟进 (Day 14)</div>
-        <p>您好，这是我们最后一次联系您——之后我们不会再打扰。✉️
+        <div class="msg-label amber">Foreign National — Explaining Higher Interest Rate &amp; Processing Fee (Approved Case)</div>
+        <p>Hi {{First Name}}, great news — your loan has been approved! 🎉
 
-我们最近帮助了一位情况与您相似的客户——他们起初不确定是否符合申请资格，但来聊了一次之后，便找到了适合自己的方案。有时候，一次对话就能改变一切。
+Before we proceed, we'd like to explain your loan terms.
 
-如果您随时想了解可能的选项，我们都在。您可以通过 WhatsApp 或致电 +65 6741 2588 联系我们。
+As a foreign national, your profile is assessed at a higher risk tier — this is standard practice across licensed lenders in Singapore and applies to all non-citizen applicants.
 
-保重 🙏</p>
+Your applicable terms:
+• Interest rate: 8% p.a.
+• Processing fee: 2%
+
+Please let us know if you'd like to proceed or have any questions. 🙏</p>
       </div>
     </div>
   </div>
+
 </div>
 
 <!-- ═══════════════════════════ SECTION 3 ═══════════════════════════ -->
@@ -821,7 +841,7 @@ The quickest way forward is a short call with our loan advisor — are you free 
     </div>
     <div class="faq-item">
       <div class="faq-q">Is Tembusu a licensed moneylender?</div>
-      <div class="faq-a">Yes — Tembusu Financial Services is a licensed moneylender regulated by the Ministry of Law (MinLaw) under the Moneylenders Act. We are not a broker. You deal directly with us from enquiry through to disbursement, with no third-party referrals.</div>
+      <div class="faq-a">Yes. Personal loan products are underwritten and disbursed by <strong>TBS Union Pte Ltd</strong>, our MinLaw-licensed moneylender subsidiary. For property-backed and automotive loans, these are handled by Tembusu directly as a private lender. Either way, you deal with us — no brokers, no third-party referrals.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Are there broker fees or hidden charges?</div>
@@ -931,6 +951,34 @@ The quickest way forward is a short call with our loan advisor — are you free 
     <div class="faq-item">
       <div class="faq-q">Do I need collateral for a business loan?</div>
       <div class="faq-a">Not necessarily. We offer both secured (property-backed) and unsecured business loans. Unsecured loans are assessed based on your business's creditworthiness and financial history. Property-backed loans allow access to larger amounts. Our advisor can recommend the right structure based on your profile.</div>
+    </div>
+  </div>
+
+  <!-- Personal Loans -->
+  <div class="faq-section">
+    <div class="faq-cat-header">
+      <span class="faq-cat-icon">👤</span>
+      <span class="faq-cat-title">Personal Loans & Referrals</span>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you offer personal loans?</div>
+      <div class="faq-a">We don't do personal loans directly — we focus on secured financing (property or vehicle-backed). But we can check with our network lenders to see if anyone can help. Let us know your situation!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">I need help clearing credit card debt or a moneylender loan — can you help?</div>
+      <div class="faq-a">That's outside what we offer, but we can refer you to one of our financing partners. We'll need a few documents to check if you're eligible first — our team will advise after a quick chat.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can foreigners or Malaysians apply for a loan?</div>
+      <div class="faq-a">For our property-backed loans, you'll need to own a Singapore private property — landed or condo. If you have that, we're happy to explore options with you regardless of nationality!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you offer loans for HDB or HDB Executive apartments?</div>
+      <div class="faq-a">We only do private property and condo at the moment, so HDB is not something we can directly help with. That said, we can check with our network of funders and see who might be able to assist — we'll get back to you on this.<br><br><em style="color:var(--amber);font-size:12px;">📌 Internal note: Refer lead to broker network for HDB cases.</em></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What loan amounts are available for personal financing referrals?</div>
+      <div class="faq-a">Depends on the lender's criteria. Generally, referral partners handle a few thousand and above. Do note we can't guarantee outcomes — we make the intro and the partner does their own assessment.</div>
     </div>
   </div>
 </div>
@@ -1046,6 +1094,7 @@ Notes: [Any context from conversation]</p>
         <div class="boundary-item">Personal loans for accredited investors only (specialised product — refer to specialist)</div>
         <div class="boundary-item">Investment advice or financial planning</div>
         <div class="boundary-item">Loans to overseas companies with no Singapore nexus</div>
+        <div class="boundary-item">Small unsecured personal loans under ~$10K — credit card debt, medical fees, or personal cash needs with no collateral</div>
       </div>
     </div>
   </div>
@@ -1131,5 +1180,28 @@ Notes: [Any context from conversation]</p>
   Questions? Speak to the Marketing team · tembusufs.com · +65 6741 2588
 </div>
 
+<script>
+  const sections = document.querySelectorAll('#s1, #s2, #s3, #s4, #s5, #s6, #s7');
+  const navItems = document.querySelectorAll('.toc-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === '#' + id) {
+            item.classList.add('active');
+          }
+        });
+      }
+    });
+  }, {
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(section => observer.observe(section));
+</script>
 </body>
 </html>
